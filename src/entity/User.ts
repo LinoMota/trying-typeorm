@@ -4,34 +4,34 @@ import { Post } from './Post'
 
 @Entity()
 export class User extends BaseEntity {
-    @PrimaryGeneratedColumn()
-    id!: number;
+  @PrimaryGeneratedColumn()
+  id!: number;
 
-    @Column()
-    username!: string
+  @Column()
+  username!: string
 
-    @Column()
-    realname!: string
+  @Column()
+  realname!: string
 
-    @Column()
-    phone!: string
+  @Column()
+  phone!: string
 
-    @Column()
-    email!: string
+  @Column()
+  email!: string
 
-    @Column()
-    description!: string
+  @Column()
+  description!: string
 
-    @Column('date', { nullable: false })
-    birthdate!: Date
+  @Column('date', { nullable: false })
+  birthdate!: Date
 
-    @ManyToMany(() => User, user => user.friends)
-    @JoinTable()
-    friends!: User[]
+  @ManyToMany(() => User, user => user.friends)
+  @JoinTable()
+  friends!: User[]
 
-    @OneToMany(() => Commentary, commentary => commentary.user)
-    commmentarys!: Commentary[]
+  @OneToMany(() => Commentary, commentary => commentary.user)
+  commmentarys!: Commentary[]
 
-    @OneToMany(() => Post, post => post)
-    posts!: Post[]
+  @OneToMany(() => Post, post => post)
+  posts!: Post[]
 }
