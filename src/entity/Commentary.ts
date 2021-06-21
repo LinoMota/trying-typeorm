@@ -1,15 +1,14 @@
+import { BaseEntity, Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm'
 import { User } from './User'
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm'
 
 @Entity()
-export class Commentary {
+export class Commentary extends BaseEntity {
     @PrimaryGeneratedColumn()
     id!: string
 
     @Column()
     description!: string
 
-    @Column()
-    @ManyToOne(type => User, user => user.commentarys)
+    @ManyToOne(() => User, user => user.commmentarys)
     user!: User
 }

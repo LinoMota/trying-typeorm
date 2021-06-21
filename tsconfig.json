@@ -1,16 +1,18 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "module": "commonjs",
+    "module": "CommonJS",
     "lib": [
       "ESNext",
       "DOM"
     ],
+    "strict": true,
     "outDir": "./build",
     "rootDir": "./src",
     "baseUrl": "./src",
-    "strict": true,
-    "rootDirs": ["src/entity"],
+    "rootDirs": [
+      "src/entity"
+    ],
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,

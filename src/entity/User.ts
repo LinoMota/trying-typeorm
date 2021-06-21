@@ -1,26 +1,37 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm'
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany, ManyToMany, JoinTable, BaseEntity } from 'typeorm'
 import { Commentary } from './Commentary'
 import { Post } from './Post'
 
 @Entity()
-export class User {
+export class User extends BaseEntity {
     @PrimaryGeneratedColumn()
     id!: number;
 
     @Column()
-    firstName!: string
+    username!: string
 
     @Column()
-    lastName!: string
+    realname!: string
 
     @Column()
-    age!: number
+    phone!: string
 
     @Column()
-    @OneToMany(type => Post, post => post.user)
+    email!: string
+
+    @Column()
+    description!: string
+
+    @Column('date', { nullable: false })
+    birthdate!: Date
+
+    @ManyToMany(() => User, user => user.friends)
+    @JoinTable()
+    friends!: User[]
+
+    @OneToMany(() => Commentary, commentary => commentary.user)
+    commmentarys!: Commentary[]
+
+    @OneToMany(() => Post, post => post)
     posts!: Post[]
-
-    @Column()
-    @OneToMany(type => Commentary, commentary => commentary.user)
-    commentarys!: Commentary[]
 }
